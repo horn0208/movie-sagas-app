@@ -1,13 +1,17 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import {useSelector} from 'react-redux';
+import {useHistory} from 'react-router-dom';
 
-function Details( props ){
-    // template hook
-    const [ hook, setHook ] = useState( null );
+function Details(){
+
+    const history = useHistory();
+    const myMovie = useSelector(store => store.myMovie);
      
     return(
         <div>
             <h2>Details</h2>
-            <p>Props: { JSON.stringify( props ) }</p>
+            <p>myMovie: { JSON.stringify(myMovie) }</p>
+            <button onClick={()=>history.push('/home')}>Back to List</button>
         </div>
     );
 }

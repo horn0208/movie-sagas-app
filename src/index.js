@@ -66,7 +66,7 @@ const genres = (state = [], action) => {
     }
 }
 
-// reducer to store movie ID clicked for details
+// reducer to store details of movie selected
 const myMovie = (state = [], action) =>{
     switch(action.type){
         case 'SET_MY_MOVIE':
