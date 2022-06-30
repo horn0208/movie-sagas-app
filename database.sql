@@ -84,8 +84,9 @@ VALUES
 --QUERIES
 --get one movie's info
 SELECT * FROM movies WHERE id=2;
---get one movie's genres
-SELECT genres.name FROM genres
+
+--get genres and genre ids:
+SELECT genres.id, genres.name FROM genres
 	JOIN movies_genres ON movies_genres.genre_id=genres.id
 	JOIN movies ON movies.id=movies_genres.movie_id
 	WHERE movies.id=2;
