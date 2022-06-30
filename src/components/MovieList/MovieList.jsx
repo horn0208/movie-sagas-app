@@ -13,11 +13,11 @@ function MovieList() {
         dispatch({ type: 'FETCH_MOVIES' });
     }, []);
 
-    //click handler for details view, sending movie ID to reducer (reducer will pass id to... props? or store till sagas needs it)
+    //click handler for details view, sending movie ID to reducer & saga
     const handleClick=(myMovieID)=>{
         console.log('in handleClick, myMovieID:', myMovieID);
-        // send movie ID that was clicked to reducer
-        dispatch({type: 'STORE_MOVIE_ID', payload: myMovieID});
+        // send movie id to saga to retrieve movie info
+        dispatch({type: 'FETCH_MY_MOVIE', payload: myMovieID});
         // go to details view
         history.push('/details');
     }
