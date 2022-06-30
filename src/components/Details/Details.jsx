@@ -10,9 +10,10 @@ function Details(){
      
     return(
         <div>
-            <h2>Details</h2>
-            <h3>Genres: { genres.map(genre =>(`${genre.name}  `)) }</h3>
-            <p>myMovie: { JSON.stringify(myMovie) }</p>
+            <h2>{myMovie[0].title}</h2>
+            <img src={myMovie[0].poster} alt="movie poster" />
+            <h4>Genres: { genres.map(genre =>(`${genre.name}  `)) }</h4>
+            <p>{myMovie[0].description}</p>
             <button onClick={()=>history.push('/home')}>Back to List</button>
         </div>
     );
