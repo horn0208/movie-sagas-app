@@ -18,6 +18,8 @@ function MovieList() {
         console.log('in handleClick, myMovieID:', myMovieID);
         // send movie id to saga to retrieve movie info
         dispatch({type: 'FETCH_MY_MOVIE', payload: myMovieID});
+        // send movie id to saga to retrieve genre info, maybe this is redundant and could have one saga for both these?
+        dispatch({type: 'FETCH_MY_GENRES', payload: myMovieID});
         // go to details view
         history.push('/details');
     }
