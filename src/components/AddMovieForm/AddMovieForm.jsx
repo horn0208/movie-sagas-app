@@ -22,6 +22,11 @@ function AddMovieForm(){
                 description: description,
                 genre_id: genre
         }});
+        // reset inputs, may be unnecessary?
+        setTitle('');
+        setPoster('');
+        setDescription('');
+        setGenre(1);
         // go back to home view:
         history.push('/home');
     }

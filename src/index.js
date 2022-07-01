@@ -27,8 +27,8 @@ function* postMovie(action){
         yield axios.post('/api/movie', action.payload);
         // run saga that gets all the movies
         yield put({type: 'FETCH_MOVIES'});
-    } catch {
-        console.log('post movie error');
+    } catch(err) {
+        console.log('post movie error', err);
     }
 }
 
@@ -53,8 +53,8 @@ function* fetchMyMovie(action){
         console.log('fetchMyMovie, myMovie.data:', myMovie.data);
         // send movie data to reducer
         yield put({type: 'SET_MY_MOVIE', payload: myMovie.data});
-    } catch {
-        console.log('get my movie error');
+    } catch(err) {
+        console.log('get my movie error', err);
     }
 }
 
@@ -65,8 +65,8 @@ function* fetchMyGenres(action){
         const myGenres = yield axios.get(`/api/genre/${action.payload}`);
         // send genres to reducer
         yield put({type: 'SET_GENRES', payload: myGenres.data});
-    } catch {
-        console.log('get genres error');
+    } catch(err) {
+        console.log('get genres error', err);
     }
 }
 
