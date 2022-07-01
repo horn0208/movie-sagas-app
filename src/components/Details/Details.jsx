@@ -23,7 +23,6 @@ function Details(){
     const genres = useSelector(store => store.genres);
 
     const handleClick=()=>{
-        dispatch({type: 'SET_MY_MOVIE', payload: ['']});
         history.push('/home');
     }
      

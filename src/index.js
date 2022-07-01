@@ -94,7 +94,7 @@ const genres = (state = [], action) => {
 }
 
 // reducer to store details of movie selected
-    // had to initialize state with something to prevent I'm guessing race conditions???
+    // had to initialize state with something to prevent I'm guessing a race condition???
     // what's a better way to solve this? If it's an empty array, details view won't render
     // due to everything related to the movie being undefined until the GET call is done
 const myMovie = (state = [''], action) =>{ 
