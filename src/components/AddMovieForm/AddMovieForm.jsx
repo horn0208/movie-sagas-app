@@ -6,7 +6,8 @@ import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
+import Select from '@mui/material/Select';
+import InputLabel from '@mui/material/InputLabel';
 import { MenuItem } from '@mui/material';
 
 function AddMovieForm(){
@@ -14,34 +15,39 @@ function AddMovieForm(){
     const [ title, setTitle ] = useState('');
     const [ poster, setPoster ] = useState('');
     const [ description, setDescription ] = useState('');
-    const [ genre, setGenre ] = useState(1);
+    const [ genre, setGenre ] = useState(0);
 
     const history = useHistory();
     const dispatch = useDispatch();
 
     const handleClick=()=>{
-        // dispatch new movie object to saga
-        dispatch({
-            type: 'POST_MOVIE', 
-            payload: {
-                title: title,
-                poster: poster,
-                description: description,
-                genre_id: genre
-        }});
-        // reset inputs, may be unnecessary?
-        setTitle('');
-        setPoster('');
-        setDescription('');
-        setGenre(1);
-        // go back to home view:
-        history.push('/home');
+        //validate inputs:
+        if(genre!==0 && title!=='' && poster!=='' && description!==''){
+            // dispatch new movie object to saga
+            dispatch({
+                type: 'POST_MOVIE', 
+                payload: {
+                    title: title,
+                    poster: poster,
+                    description: description,
+                    genre_id: genre
+            }});
+            // reset inputs, may be unnecessary?
+            setTitle('');
+            setPoster('');
+            setDescription('');
+            setGenre(0);
+            // go back to home view:
+            history.push('/home');
+        } else {
+            alert('Please fill out all fields before saving');
+        }
     }
      
     return(
         <Box
             sx={{
-                width: 500,
+                width: 700,
                 maxWidth: '100%',
             }}>
             <Typography variant="h3">Add A Movie</Typography>
@@ -52,7 +58,6 @@ function AddMovieForm(){
                 value={title} 
                 onChange={(event)=>setTitle(event.target.value)}>
                 </TextField>
-            <br />
             <TextField 
                 type="text" 
                 label="Poster URL" 
@@ -60,9 +65,9 @@ function AddMovieForm(){
                 value={poster} 
                 onChange={(event)=>setPoster(event.target.value)}>
                 </TextField>
-            <br />
-            <label> Genre:  
+            <InputLabel></InputLabel>
                 <Select size="small" value={genre} onChange={(event)=>setGenre(Number(event.target.value))}>
+                    <MenuItem value="0">Genre</MenuItem>
                     <MenuItem value="1">Adventure</MenuItem>
                     <MenuItem value="2">Animated</MenuItem>
                     <MenuItem value="3">Biographical</MenuItem>
@@ -77,9 +82,15 @@ function AddMovieForm(){
                     <MenuItem value="12">Space-Opera</MenuItem>
                     <MenuItem value="13">Superhero</MenuItem>
                 </Select>
-            </label>
-            <br />
-            <TextField multiline fullWidth label="Description" cols="30" rows="10" value={description} onChange={(event)=>setDescription(event.target.value)}></TextField>
+            <TextField 
+                multiline 
+                fullWidth 
+                label="Description" 
+                cols="20" 
+                rows="8" 
+                value={description} 
+                onChange={(event)=>setDescription(event.target.value)}>
+            </TextField>
             <br />
             <Button onClick={handleClick}>Save</Button>
             <Button onClick={()=>history.push('/home')}>Cancel</Button>
