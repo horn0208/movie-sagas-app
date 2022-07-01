@@ -3,6 +3,11 @@ import {useHistory} from 'react-router-dom';
 import {useDispatch} from 'react-redux';
 // MUI style imports
 import Typography from '@mui/material/Typography';
+import TextField from '@mui/material/TextField';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+import { MenuItem } from '@mui/material';
 
 function AddMovieForm(){
     // hold input values in local state:
@@ -34,32 +39,51 @@ function AddMovieForm(){
     }
      
     return(
-        <div>
+        <Box
+            sx={{
+                width: 500,
+                maxWidth: '100%',
+            }}>
             <Typography variant="h3">Add A Movie</Typography>
-            <input type="text" placeholder="Title" value={title} onChange={(event)=>setTitle(event.target.value)}/>
-            <input type="text" placeholder="Poster URL" value={poster} onChange={(event)=>setPoster(event.target.value)}/>
-            <label> Genre:
-                <select value={genre} onChange={(event)=>setGenre(Number(event.target.value))}>
-                    <option value="1">Adventure</option>
-                    <option value="2">Animated</option>
-                    <option value="3">Biographical</option>
-                    <option value="4">Comedy</option>
-                    <option value="5">Disaster</option>
-                    <option value="6">Drama</option>
-                    <option value="7">Epic</option>
-                    <option value="8">Fantasy</option>
-                    <option value="9">Musical</option>
-                    <option value="10">Romantic</option>
-                    <option value="11">Science Fiction</option>
-                    <option value="12">Space-Opera</option>
-                    <option value="13">Superhero</option>
-                </select>
+            <TextField 
+                type="text" 
+                label="Title"
+                size="small"
+                value={title} 
+                onChange={(event)=>setTitle(event.target.value)}>
+                </TextField>
+            <br />
+            <TextField 
+                type="text" 
+                label="Poster URL" 
+                size="small"
+                value={poster} 
+                onChange={(event)=>setPoster(event.target.value)}>
+                </TextField>
+            <br />
+            <label> Genre:  
+                <Select size="small" value={genre} onChange={(event)=>setGenre(Number(event.target.value))}>
+                    <MenuItem value="1">Adventure</MenuItem>
+                    <MenuItem value="2">Animated</MenuItem>
+                    <MenuItem value="3">Biographical</MenuItem>
+                    <MenuItem value="4">Comedy</MenuItem>
+                    <MenuItem value="5">Disaster</MenuItem>
+                    <MenuItem value="6">Drama</MenuItem>
+                    <MenuItem value="7">Epic</MenuItem>
+                    <MenuItem value="8">Fantasy</MenuItem>
+                    <MenuItem value="9">Musical</MenuItem>
+                    <MenuItem value="10">Romantic</MenuItem>
+                    <MenuItem value="11">Science Fiction</MenuItem>
+                    <MenuItem value="12">Space-Opera</MenuItem>
+                    <MenuItem value="13">Superhero</MenuItem>
+                </Select>
             </label>
             <br />
-            <textarea placeholder="Description" cols="30" rows="10" value={description} onChange={(event)=>setDescription(event.target.value)}></textarea>
-            <button onClick={handleClick}>Save</button>
-            <button onClick={()=>history.push('/home')}>Cancel</button>
-        </div>
+            <TextField multiline fullWidth label="Description" cols="30" rows="10" value={description} onChange={(event)=>setDescription(event.target.value)}></TextField>
+            <br />
+            <Button onClick={handleClick}>Save</Button>
+            <Button onClick={()=>history.push('/home')}>Cancel</Button>
+        </Box>
     );
 }
 
