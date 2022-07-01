@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 import {useParams} from 'react-router-dom';
+// MUI style imports
+import Typography from '@mui/material/Typography';
 
 
 function Details(){
@@ -28,10 +30,10 @@ function Details(){
      
     return(
         <div>
-            <h2>{myMovie[0].title}</h2>
+            <Typography variant="h3">{myMovie[0].title}</Typography>
             <img src={myMovie[0].poster} alt="movie poster" />
-            <h4>Genres: { genres.map(genre =>(`${genre.name}  `)) }</h4>
-            <p>{myMovie[0].description}</p>
+            <Typography variant="h6">Genres: { genres.map(genre =>(`${genre.name}  `)) }</Typography>
+            <Typography variant="body1">{myMovie[0].description}</Typography>
             <button onClick={handleClick}>Back to List</button>
         </div>
     );

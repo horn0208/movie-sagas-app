@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import {useHistory} from 'react-router-dom';
 import {useDispatch} from 'react-redux';
+// MUI style imports
+import Typography from '@mui/material/Typography';
 
 function AddMovieForm(){
     // hold input values in local state:
@@ -33,7 +35,7 @@ function AddMovieForm(){
      
     return(
         <div>
-            <h2>Add A Movie</h2>
+            <Typography variant="h3">Add A Movie</Typography>
             <input type="text" placeholder="Title" value={title} onChange={(event)=>setTitle(event.target.value)}/>
             <input type="text" placeholder="Poster URL" value={poster} onChange={(event)=>setPoster(event.target.value)}/>
             <label> Genre:

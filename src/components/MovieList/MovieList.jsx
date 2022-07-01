@@ -2,6 +2,9 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './MovieList.css'
 import {useHistory} from 'react-router-dom';
+//MUI style imports
+import Typography from '@mui/material/Typography';
+
 
 function MovieList() {
 
@@ -15,7 +18,6 @@ function MovieList() {
 
     //click handler for details view, sending movie ID to reducer & saga
     const handleClick=(myMovieID)=>{
-        console.log('in handleClick, myMovieID:', myMovieID);
         // send movie id to saga to retrieve movie info
         dispatch({type: 'FETCH_MY_MOVIE', payload: myMovieID});
         // send movie id to saga to retrieve genre info
@@ -26,12 +28,11 @@ function MovieList() {
 
     return (
         <main>
-            <h1>MovieList</h1>
             <section className="movies">
                 {movies.map(movie => {
                     return (
                         <div key={movie.id} >
-                            <h3>{movie.title}</h3>
+                            <Typography variant="h6">{movie.title}</Typography>
                             <img onClick={()=>handleClick(movie.id)} src={movie.poster} alt={movie.title}/>
                         </div>
                     );
