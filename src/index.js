@@ -13,9 +13,23 @@ import axios from 'axios';
 
 // Create the rootSaga generator function
 function* rootSaga() {
+    yield takeEvery('POST_MOVIE', postMovie);
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
     yield takeEvery('FETCH_MY_MOVIE', fetchMyMovie);
     yield takeEvery('FETCH_MY_GENRES', fetchMyGenres);
+}
+
+function* postMovie(action){
+    try {
+        //action.payload.title, .poster, .genre_id, and .description
+        console.log('in postMovie, genre payload:', action.payload.genre_id);
+        //send new movie to server
+        yield axios.post('/api/movie', action.payload);
+        // run saga that gets all the movies
+        yield put({type: 'FETCH_MOVIES'});
+    } catch {
+        console.log('post movie error');
+    }
 }
 
 function* fetchAllMovies() {
@@ -80,7 +94,10 @@ const genres = (state = [], action) => {
 }
 
 // reducer to store details of movie selected
-const myMovie = (state = [], action) =>{
+    // had to initialize state with something to prevent I'm guessing race conditions???
+    // what's a better way to solve this? If it's an empty array, details view won't render
+    // due to everything related to the movie being undefined until the GET call is done
+const myMovie = (state = [1], action) =>{ 
     switch(action.type){
         case 'SET_MY_MOVIE':
             return action.payload;

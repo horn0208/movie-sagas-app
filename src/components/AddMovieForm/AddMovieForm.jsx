@@ -1,17 +1,29 @@
 import { useState } from 'react';
 import {useHistory} from 'react-router-dom';
+import {useDispatch} from 'react-redux';
 
 function AddMovieForm(){
-    // store input values in local state:
+    // hold input values in local state:
     const [ title, setTitle ] = useState('');
     const [ poster, setPoster ] = useState('');
     const [ description, setDescription ] = useState('');
-    const [ genre, setGenre ] = useState(0);
+    const [ genre, setGenre ] = useState(1);
 
     const history = useHistory();
+    const dispatch = useDispatch();
 
     const handleClick=()=>{
-        console.log(genre);
+        // dispatch new movie object to saga
+        dispatch({
+            type: 'POST_MOVIE', 
+            payload: {
+                title: title,
+                poster: poster,
+                description: description,
+                genre_id: genre
+        }});
+        // go back to home view:
+        history.push('/home');
     }
      
     return(
