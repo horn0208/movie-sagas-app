@@ -3,6 +3,7 @@ import './App.css';
 import MovieList from '../MovieList/MovieList'
 import Details from '../Details/Details';
 import AddMovieForm from '../AddMovieForm/AddMovieForm';
+import EditMovie from '../EditMovie/EditMovie';
 //MUI Imports
 import Typography from '@mui/material/Typography';
 
@@ -24,6 +25,9 @@ function App() {
         {/* Add Movie page */}
         <Route path="/addMovie">
           <AddMovieForm />
+        </Route>
+        <Route path="/editMovie">
+          <EditMovie />
         </Route>
       </Router>
     </div>

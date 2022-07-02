@@ -30,6 +30,10 @@ function Details(){
     const handleClick=()=>{
         history.push('/home');
     }
+
+    const handleClickEdit=()=>{
+        history.push('/editMovie');
+    }
      
     return(
         <Grid container justifyContent="center" >
@@ -42,6 +46,10 @@ function Details(){
                     <Button 
                         color='secondary'
                         onClick={handleClick}>Back to List
+                    </Button>
+                    <Button 
+                        color='secondary'
+                        onClick={handleClickEdit}>Edit Film
                     </Button>
                 </Paper>
             </Grid>
