@@ -2,6 +2,11 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './MovieList.css'
 import {useHistory} from 'react-router-dom';
+//MUI style imports
+import Typography from '@mui/material/Typography';
+import { Grid, Paper } from "@material-ui/core";
+import Link from '@mui/material/Link';
+
 
 function MovieList() {
 
@@ -15,7 +20,6 @@ function MovieList() {
 
     //click handler for details view, sending movie ID to reducer & saga
     const handleClick=(myMovieID)=>{
-        console.log('in handleClick, myMovieID:', myMovieID);
         // send movie id to saga to retrieve movie info
         dispatch({type: 'FETCH_MY_MOVIE', payload: myMovieID});
         // send movie id to saga to retrieve genre info
@@ -26,17 +30,29 @@ function MovieList() {
 
     return (
         <main>
-            <h1>MovieList</h1>
-            <section className="movies">
+            <div className='add-link'>
+                <Link 
+                    color="primary"
+                    variant='button'
+                    underline="hover"
+                    href='/#/addMovie'>Add Film
+                </Link>
+            </div>
+            <Grid container spacing={2} >
                 {movies.map(movie => {
                     return (
-                        <div key={movie.id} >
-                            <h3>{movie.title}</h3>
-                            <img onClick={()=>handleClick(movie.id)} src={movie.poster} alt={movie.title}/>
-                        </div>
+                        <Grid item xs={12} sm={4} lg={3} xl={2} key={movie.id}>
+                            <Paper 
+                                elevation={1} 
+                                className='movie-paper' 
+                                onClick={()=>handleClick(movie.id)}>
+                                    <Typography variant="h6">{movie.title}</Typography>
+                                    <img src={movie.poster} alt={movie.title}/>
+                            </Paper>
+                        </Grid>
                     );
                 })}
-            </section>
+            </Grid>
         </main>
 
     );

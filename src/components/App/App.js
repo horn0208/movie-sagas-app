@@ -3,11 +3,13 @@ import './App.css';
 import MovieList from '../MovieList/MovieList'
 import Details from '../Details/Details';
 import AddMovieForm from '../AddMovieForm/AddMovieForm';
+//MUI Imports
+import Typography from '@mui/material/Typography';
 
 function App() {
   return (
     <div className="App">
-      <h1>The Movies Saga!</h1>
+      <Typography variant="h1">Film Collection</Typography>
       <Router>        
         <Route path="/" exact>
           <MovieList />

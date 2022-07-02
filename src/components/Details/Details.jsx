@@ -2,7 +2,12 @@ import { useState, useEffect } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 import {useParams} from 'react-router-dom';
-
+import './Details.css'
+// MUI style imports
+import Typography from '@mui/material/Typography';
+import Paper from '@mui/material/Paper';
+import Grid from '@mui/material/Grid';
+import Button from '@mui/material/Button';
 
 function Details(){
 
@@ -27,13 +32,20 @@ function Details(){
     }
      
     return(
-        <div>
-            <h2>{myMovie[0].title}</h2>
-            <img src={myMovie[0].poster} alt="movie poster" />
-            <h4>Genres: { genres.map(genre =>(`${genre.name}  `)) }</h4>
-            <p>{myMovie[0].description}</p>
-            <button onClick={handleClick}>Back to List</button>
-        </div>
+        <Grid container justifyContent="center" >
+            <Grid item xs={11} md={8} lg={6}>
+                <Paper className='paper-details' elevation={3}>
+                    <Typography variant="h3">{myMovie[0].title}</Typography>
+                    <img className='img-details' src={myMovie[0].poster} alt="movie poster" />
+                    <Typography variant="h6">Genres: { genres.map(genre =>(`${genre.name}  `)) }</Typography>
+                    <Typography className='description' variant="body1">{myMovie[0].description}</Typography>
+                    <Button 
+                        color='secondary'
+                        onClick={handleClick}>Back to List
+                    </Button>
+                </Paper>
+            </Grid>
+        </Grid>
     );
 }
 
