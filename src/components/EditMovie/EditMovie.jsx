@@ -19,7 +19,6 @@ function EditMovie(){
     const [ title, setTitle ] = useState(myMovie[0].title);
     const [ poster, setPoster ] = useState(myMovie[0].poster);
     const [ description, setDescription ] = useState(myMovie[0].description);
-    // const [ genre, setGenre ] = useState(myMovie[0].genre_id);
 
     const history = useHistory();
     const dispatch = useDispatch();
@@ -28,29 +27,21 @@ function EditMovie(){
 
     const handleClick=()=>{
         //validate inputs:
-        if(genre!==0 && title!=='' && poster!=='' && description!==''){
+        if(title!=='' && poster!=='' && description!==''){
             // dispatch updated movie object to saga
             dispatch({
                 type: 'EDIT_MOVIE', 
                 payload: {
                     title: title,
                     poster: poster,
-                    description: description,
-                    genre_id: genre
+                    description: description
             }});
-            // reset inputs, may be unnecessary?
-            // setTitle('');
-            // setPoster('');
-            // setDescription('');
-            // setGenre(0);
-            // go back to home view:
             history.push('/home');
         } else {
             alert('Please fill out all fields and select a genre before saving');
         }
     }
-
-     
+  
     return(
         <Box className='inputs-box'
             sx={{
@@ -75,27 +66,6 @@ function EditMovie(){
                 value={poster} 
                 onChange={(event)=>setPoster(event.target.value)}>
                 </TextField>
-            
-            {/* <Select
-                size="small" 
-                color='secondary'
-                value={genre} 
-                onChange={(event)=>setGenre(Number(event.target.value))}>
-                    <MenuItem value="0">Genre</MenuItem>
-                    <MenuItem value="1">Adventure</MenuItem>
-                    <MenuItem value="2">Animated</MenuItem>
-                    <MenuItem value="3">Biographical</MenuItem>
-                    <MenuItem value="4">Comedy</MenuItem>
-                    <MenuItem value="5">Disaster</MenuItem>
-                    <MenuItem value="6">Drama</MenuItem>
-                    <MenuItem value="7">Epic</MenuItem>
-                    <MenuItem value="8">Fantasy</MenuItem>
-                    <MenuItem value="9">Musical</MenuItem>
-                    <MenuItem value="10">Romantic</MenuItem>
-                    <MenuItem value="11">Science Fiction</MenuItem>
-                    <MenuItem value="12">Space-Opera</MenuItem>
-                    <MenuItem value="13">Superhero</MenuItem>
-            </Select> */}
             </div>
             <br />
             <TextField 
@@ -116,7 +86,7 @@ function EditMovie(){
             </Button>
             <Button
                 color='secondary' 
-                onClick={()=>history.push('/home')}>Cancel
+                onClick={()=>history.goBack()}>Cancel
             </Button>
         </Box>
     );
