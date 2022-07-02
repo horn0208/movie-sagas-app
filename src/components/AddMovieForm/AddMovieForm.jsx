@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import {useHistory} from 'react-router-dom';
 import {useDispatch} from 'react-redux';
+import './AddMovieForm.css'
 // MUI style imports
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Select from '@mui/material/Select';
-import InputLabel from '@mui/material/InputLabel';
 import { MenuItem } from '@mui/material';
 
 function AddMovieForm(){
@@ -40,33 +40,42 @@ function AddMovieForm(){
             // go back to home view:
             history.push('/home');
         } else {
-            alert('Please fill out all fields before saving');
+            alert('Please fill out all fields and select a genre before saving');
         }
     }
      
     return(
-        <Box
+        <Box className='inputs-box'
             sx={{
                 width: 700,
                 maxWidth: '100%',
             }}>
-            <Typography variant="h3">Add A Movie</Typography>
+            <Typography variant="h3">Add A Film</Typography>
             <TextField 
+                className='input-field'
                 type="text" 
                 label="Title"
                 size="small"
+                color='secondary'
                 value={title} 
                 onChange={(event)=>setTitle(event.target.value)}>
                 </TextField>
             <TextField 
+                className='input-field'
                 type="text" 
                 label="Poster URL" 
                 size="small"
+                color='secondary'
                 value={poster} 
                 onChange={(event)=>setPoster(event.target.value)}>
                 </TextField>
-            <InputLabel></InputLabel>
-                <Select size="small" value={genre} onChange={(event)=>setGenre(Number(event.target.value))}>
+            
+            <Select 
+                className='input-field'
+                size="small" 
+                color='secondary'
+                value={genre} 
+                onChange={(event)=>setGenre(Number(event.target.value))}>
                     <MenuItem value="0">Genre</MenuItem>
                     <MenuItem value="1">Adventure</MenuItem>
                     <MenuItem value="2">Animated</MenuItem>
@@ -81,19 +90,28 @@ function AddMovieForm(){
                     <MenuItem value="11">Science Fiction</MenuItem>
                     <MenuItem value="12">Space-Opera</MenuItem>
                     <MenuItem value="13">Superhero</MenuItem>
-                </Select>
+            </Select>
+            <br />
             <TextField 
+                className='input-field'
                 multiline 
                 fullWidth 
                 label="Description" 
-                cols="20" 
-                rows="8" 
+                cols="40" 
+                rows="7" 
+                color='secondary'
                 value={description} 
                 onChange={(event)=>setDescription(event.target.value)}>
             </TextField>
             <br />
-            <Button onClick={handleClick}>Save</Button>
-            <Button onClick={()=>history.push('/home')}>Cancel</Button>
+            <Button 
+                color='secondary'
+                onClick={handleClick}>Save
+            </Button>
+            <Button
+                color='secondary' 
+                onClick={()=>history.push('/home')}>Cancel
+            </Button>
         </Box>
     );
 }
