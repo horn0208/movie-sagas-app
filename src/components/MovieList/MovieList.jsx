@@ -4,6 +4,7 @@ import './MovieList.css'
 import {useHistory} from 'react-router-dom';
 //MUI style imports
 import Typography from '@mui/material/Typography';
+import { Grid, Paper } from "@material-ui/core";
 
 
 function MovieList() {
@@ -28,16 +29,18 @@ function MovieList() {
 
     return (
         <main>
-            <section className="movies">
+            <Grid container spacing={2} >
                 {movies.map(movie => {
                     return (
-                        <div key={movie.id} >
-                            <Typography variant="h6">{movie.title}</Typography>
-                            <img onClick={()=>handleClick(movie.id)} src={movie.poster} alt={movie.title}/>
-                        </div>
+                        <Grid item xs={12} sm={4} lg={3} xl={2} key={movie.id}>
+                            <Paper elevation={1} className='movie-paper'>
+                                <Typography variant="h6">{movie.title}</Typography>
+                                <img onClick={()=>handleClick(movie.id)} src={movie.poster} alt={movie.title}/>
+                            </Paper>
+                        </Grid>
                     );
                 })}
-            </section>
+            </Grid>
         </main>
 
     );

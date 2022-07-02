@@ -4,7 +4,7 @@ import {useHistory} from 'react-router-dom';
 import {useParams} from 'react-router-dom';
 // MUI style imports
 import Typography from '@mui/material/Typography';
-
+import Paper from '@mui/material/Paper';
 
 function Details(){
 
@@ -29,13 +29,13 @@ function Details(){
     }
      
     return(
-        <div>
+        <Paper elevation={3}>
             <Typography variant="h3">{myMovie[0].title}</Typography>
             <img src={myMovie[0].poster} alt="movie poster" />
             <Typography variant="h6">Genres: { genres.map(genre =>(`${genre.name}  `)) }</Typography>
             <Typography variant="body1">{myMovie[0].description}</Typography>
             <button onClick={handleClick}>Back to List</button>
-        </div>
+        </Paper>
     );
 }
 

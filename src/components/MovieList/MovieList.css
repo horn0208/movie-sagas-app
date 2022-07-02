@@ -1,4 +1,10 @@
-.movies {
-    display : flex;
-    flex-wrap: wrap;
+.movie-paper{
+    max-width: 300px;
+    height: 350px;
+    margin: auto;
+    padding-top: 20px;
+   
+}
+.movie-paper:hover{
+    background-color: coral;
 }
