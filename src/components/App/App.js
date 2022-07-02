@@ -12,11 +12,9 @@ function App() {
       <Typography variant="h1">Film Collection</Typography>
       <Router>        
         <Route path="/" exact>
-          <a href='/#/addMovie'>Add Film</a>
           <MovieList />
         </Route>
         <Route path="/home">
-          <a href='/#/addMovie'>Add Film</a>
           <MovieList />
         </Route>
         {/* Details page */}

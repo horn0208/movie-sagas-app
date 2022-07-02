@@ -5,6 +5,7 @@ import {useHistory} from 'react-router-dom';
 //MUI style imports
 import Typography from '@mui/material/Typography';
 import { Grid, Paper } from "@material-ui/core";
+import Link from '@mui/material/Link';
 
 
 function MovieList() {
@@ -29,6 +30,13 @@ function MovieList() {
 
     return (
         <main>
+            <div className='add-link'>
+                <Link 
+                    color="secondary"
+                    variant='button'
+                    href='/#/addMovie'>Add Film
+                </Link>
+            </div>
             <Grid container spacing={2} >
                 {movies.map(movie => {
                     return (
