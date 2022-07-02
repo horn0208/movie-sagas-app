@@ -50,9 +50,9 @@ function AddMovieForm(){
                 width: 700,
                 maxWidth: '100%',
             }}>
-            <Typography variant="h3">Add A Film</Typography>
-            <TextField 
-                className='input-field'
+            <Typography className='add-film' variant="h3">Add A Film</Typography>
+            <div className='inputs-sm'>
+            <TextField
                 type="text" 
                 label="Title"
                 size="small"
@@ -60,8 +60,7 @@ function AddMovieForm(){
                 value={title} 
                 onChange={(event)=>setTitle(event.target.value)}>
                 </TextField>
-            <TextField 
-                className='input-field'
+            <TextField
                 type="text" 
                 label="Poster URL" 
                 size="small"
@@ -70,8 +69,7 @@ function AddMovieForm(){
                 onChange={(event)=>setPoster(event.target.value)}>
                 </TextField>
             
-            <Select 
-                className='input-field'
+            <Select
                 size="small" 
                 color='secondary'
                 value={genre} 
@@ -91,6 +89,7 @@ function AddMovieForm(){
                     <MenuItem value="12">Space-Opera</MenuItem>
                     <MenuItem value="13">Superhero</MenuItem>
             </Select>
+            </div>
             <br />
             <TextField 
                 className='input-field'

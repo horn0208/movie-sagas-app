@@ -1,6 +1,10 @@
 .inputs-box{
     margin: auto;
 }
-.input-field{
-    margin: 8px;
+.inputs-sm{
+    display: flex;
+    justify-content: space-evenly;
+}
+.add-film{
+    padding: 10px 0px 24px 0px;
 }
