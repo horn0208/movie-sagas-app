@@ -32,8 +32,9 @@ function MovieList() {
         <main>
             <div className='add-link'>
                 <Link 
-                    color="secondary"
+                    color="primary"
                     variant='button'
+                    underline="hover"
                     href='/#/addMovie'>Add Film
                 </Link>
             </div>
@@ -41,9 +42,12 @@ function MovieList() {
                 {movies.map(movie => {
                     return (
                         <Grid item xs={12} sm={4} lg={3} xl={2} key={movie.id}>
-                            <Paper elevation={1} className='movie-paper'>
-                                <Typography variant="h6">{movie.title}</Typography>
-                                <img onClick={()=>handleClick(movie.id)} src={movie.poster} alt={movie.title}/>
+                            <Paper 
+                                elevation={1} 
+                                className='movie-paper' 
+                                onClick={()=>handleClick(movie.id)}>
+                                    <Typography variant="h6">{movie.title}</Typography>
+                                    <img src={movie.poster} alt={movie.title}/>
                             </Paper>
                         </Grid>
                     );

@@ -3,10 +3,11 @@
     height: 350px;
     margin: auto;
     padding-top: 20px;
-   
 }
 .movie-paper:hover{
-    background-color: coral;
+    background-color: rgba(0, 0, 0, 0.174);
+    color: white;
+    cursor: pointer;
 }
 .add-link{
     padding: 10px 0px 50px 0px;
