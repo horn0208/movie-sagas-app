@@ -90,3 +90,6 @@ SELECT genres.id, genres.name FROM genres
 	JOIN movies_genres ON movies_genres.genre_id=genres.id
 	JOIN movies ON movies.id=movies_genres.movie_id
 	WHERE movies.id=2;
+
+  --update movie
+  UPDATE movies SET title='New Title', poster='images/titanic.jpg', description='New description' WHERE ID=19;

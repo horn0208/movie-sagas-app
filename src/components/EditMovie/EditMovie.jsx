@@ -23,15 +23,14 @@ function EditMovie(){
     const history = useHistory();
     const dispatch = useDispatch();
 
-    
-
     const handleClick=()=>{
         //validate inputs:
         if(title!=='' && poster!=='' && description!==''){
             // dispatch updated movie object to saga
             dispatch({
-                type: 'EDIT_MOVIE', 
+                type: 'UPDATE_MOVIE', 
                 payload: {
+                    id: myMovie[0].id,
                     title: title,
                     poster: poster,
                     description: description
