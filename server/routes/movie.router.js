@@ -16,6 +16,22 @@ router.get('/', (req, res) => {
 
 });
 
+// PUT update selected movie
+router.put('/', (req, res)=>{
+  console.log('in router PUT', req.body.id);
+  let queryString = `UPDATE movies SET title=$1, 
+    poster=$2, 
+    description=$3 
+    WHERE ID=$4`
+  let values = [req.body.title, req.body.poster, req.body.description, req.body.id]
+  pool.query(queryString, values).then((results)=>{
+    res.sendStatus(200);
+  }).catch(err=>{
+    console.log('ERROR: UPDATE movie',err);
+    res.sendStatus(500);
+  })
+}); 
+
 // GET info for selected movie
 router.get('/details/:id', (req, res)=>{
   console.log('in movie/details/:id, req.params:', req.params.id);
