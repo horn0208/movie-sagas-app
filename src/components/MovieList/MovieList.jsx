@@ -20,10 +20,6 @@ function MovieList() {
 
     //click handler for details view, sending movie ID to reducer & saga
     const handleClick=(myMovieID)=>{
-        // send movie id to saga to retrieve movie info
-        dispatch({type: 'FETCH_MY_MOVIE', payload: myMovieID});
-        // send movie id to saga to retrieve genre info
-        dispatch({type: 'FETCH_MY_GENRES', payload: myMovieID});
         // go to details view
         history.push(`/details/${myMovieID}`);
     }

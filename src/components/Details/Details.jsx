@@ -22,7 +22,7 @@ function Details(){
         dispatch({type: 'FETCH_MY_MOVIE', payload: id});
         // send movie id to saga to retrieve genre info
         dispatch({type: 'FETCH_MY_GENRES', payload: id});
-    }, []);
+    }, [id]);
 
     const myMovie = useSelector(store => store.myMovie);
     const genres = useSelector(store => store.genres);
